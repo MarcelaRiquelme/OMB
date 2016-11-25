@@ -7,7 +7,7 @@
         xmlns:prism="http://prismlibrary.com/"
         xmlns:system="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Loaded="MainWindow_OnLoaded"
+        
         Title="Administracion de OMB" 
         WindowStartupLocation="CenterScreen"
         Height="700" Width="1100"
