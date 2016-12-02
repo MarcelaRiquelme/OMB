@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Entidades;
+using OMB_Desktop.ViewModel;
 
 namespace OMB_Desktop
 {
@@ -24,11 +25,8 @@ namespace OMB_Desktop
     public MainWindow()
     {
       InitializeComponent();
-    }
-
-    private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
-    {
       //this.DataContext = new MainWindowViewModel();
-    }
-  }
+        }
+
+   }
 }

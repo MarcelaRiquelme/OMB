@@ -28,12 +28,21 @@ namespace OMB_Desktop.ViewModel
         Set(() => LoginID, ref _userid, value); 
       }
     }
+        private string _password;
+public string Password
+        {
+            get { return _password; }
+            set
+            {
+                Set(() => Password, ref _password, value);
+            }
 
+        }
     public InteractionRequest<INotification> FaltanDatos { get; set; }
 
     public InteractionRequest<INotification> CredencialesInvalidas { get; set; }
 
-    public RelayCommand<string> LoginCommand { get; set; }
+    public RelayCommand LoginCommand { get; set; }
 
     public INotification Notification { get; set; }
 
@@ -44,26 +53,26 @@ namespace OMB_Desktop.ViewModel
       //  LoginID = "---";
       //
       //  bindeamos comandos
-      LoginCommand = new RelayCommand<string>(DoLogin);
+      LoginCommand = new RelayCommand(DoLogin);
 
       FaltanDatos = new InteractionRequest<INotification>();
       CredencialesInvalidas = new InteractionRequest<INotification>();
     }
 
-    public void DoLogin(string pass)
+    public void DoLogin()
     {
       SecurityServices seg = new SecurityServices(new NullMailService());
 
-      if (!string.IsNullOrWhiteSpace(pass))
+      if (!string.IsNullOrWhiteSpace(Password) && !String.IsNullOrWhiteSpace(LoginID))
       {
-        Console.WriteLine(pass);
+        Console.WriteLine(Password);
 
-        if (seg.Login(LoginID, pass))
+        if (seg.Login(LoginID, Password))
         {
           //  OMBSesion sesion = new OMBSesion(user);
 
           //  MessengerInstance.Send<OMBSesion>(sesion);
-          if (FinishInteraction != null)
+         if (FinishInteraction != null)
             FinishInteraction();
           
           //MessengerInstance.Send<LoginMessage>(new LoginMessage() { Show = false });
