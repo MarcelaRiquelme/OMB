@@ -6,19 +6,17 @@
              StartupUri="MainWindow.xaml" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              d1p1:Ignorable="d" 
-             xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             >
-  <Application.Resources>
-    <ResourceDictionary>
-            <vml:ViewModelLocator x:Key="Locator"> </vml:ViewModelLocator> 
-        
-      <Style TargetType="{x:Type Button}">
-        <Setter Property="Margin" Value="10"></Setter>
-        <Setter Property="Height" Value="30"></Setter>
-        <Setter Property="Width" Value="150"></Setter>
-        <Setter Property="VerticalAlignment" Value="Center"></Setter>
-      </Style>
-      
-    </ResourceDictionary>
-  </Application.Resources>
+             xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006">
+    <Application.Resources>
+        <ResourceDictionary>
+            <vml:ViewModelLocator x:Key="Locator"></vml:ViewModelLocator>
+            <Style TargetType="{x:Type Button}">
+                <Setter Property="Margin" Value="10"></Setter>
+                <Setter Property="Height" Value="30"></Setter>
+                <Setter Property="Width" Value="150"></Setter>
+                <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            </Style>
+
+        </ResourceDictionary>
+    </Application.Resources>
 </Application>

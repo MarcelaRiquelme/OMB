@@ -41,6 +41,7 @@ namespace Data
     //  Agregamos libros y editoriales
 
     public DbSet<Editorial> Editoriales { get; set; }
+        public DbSet<Libro> Libros { get; set; }
 
     private StreamWriter writer;
 
@@ -92,7 +93,8 @@ namespace Data
       modelBuilder.Configurations.Add(new ConfigurarUsuario());
 
       modelBuilder.Configurations.Add(new ConfigurarEditorial());
-    }
+      modelBuilder.Configurations.Add(new ConfigurarLibro());
+        }
 
     //protected override bool ShouldValidateEntity(DbEntityEntry entityEntry)
     //{
@@ -305,4 +307,19 @@ namespace Data
         .Map(cfg => cfg.MapKey("ID_Localidad"));
     }
   }
+    public class ConfigurarLibro : EntityTypeConfiguration<Libro>
+    {
+
+        public ConfigurarLibro(){
+
+            this.ToTable("Libros");
+            this.HasKey(lib => lib.ID_Libro);
+
+            this.HasOptional(edi => edi.ID_Editorial)
+              .WithMany()
+.Map(cfg => cfg.MapKey("ID_Editorial"));
+
+    }
+
+    }
 }

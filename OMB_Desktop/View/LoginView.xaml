@@ -12,38 +12,41 @@
              d:DesignHeight="300" d:DesignWidth="300"
              DataContext="{Binding Login, Source={StaticResource Locator}}"
              >
-  <UserControl.Resources>
-    <Style x:Key="BotonLogin" TargetType="{x:Type Button}">
-      <Setter Property="FontWeight" Value="Bold"></Setter>
-      <Setter Property="Width" Value="120"></Setter>
-    </Style>
-  </UserControl.Resources>
-  
-  <i:Interaction.Triggers>
-    <prism:InteractionRequestTrigger SourceObject="{Binding FaltanDatos}">
-      <prism:PopupWindowAction IsModal="True" CenterOverAssociatedObject="True"></prism:PopupWindowAction>
-    </prism:InteractionRequestTrigger>
+    <UserControl.Resources>
+        <Style x:Key="BotonLogin" TargetType="{x:Type Button}">
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+            <Setter Property="Width" Value="120"></Setter>
+        </Style>
+    </UserControl.Resources>
 
-    <prism:InteractionRequestTrigger SourceObject="{Binding CredencialesInvalidas}">
-      <prism:PopupWindowAction IsModal="True" CenterOverAssociatedObject="True"></prism:PopupWindowAction>
-    </prism:InteractionRequestTrigger>
-  </i:Interaction.Triggers>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding BorrarEntradas}"></i:InvokeCommandAction>
+        </i:EventTrigger>
+        <prism:InteractionRequestTrigger SourceObject="{Binding FaltanDatos}">
+            <prism:PopupWindowAction IsModal="True" CenterOverAssociatedObject="True"></prism:PopupWindowAction>
+        </prism:InteractionRequestTrigger>
+        <prism:InteractionRequestTrigger SourceObject="{Binding CredencialesInvalidas}">
+            <prism:PopupWindowAction IsModal="True" CenterOverAssociatedObject="True"></prism:PopupWindowAction>
+        </prism:InteractionRequestTrigger>
+    </i:Interaction.Triggers>
 
-  <StackPanel Margin="10">
-    <DockPanel Margin="10">
-      <Label Width="80">Usuario</Label>
-      <TextBox Name="txtUsuario" Text="{Binding LoginID}"
+    <StackPanel Margin="10">
+        <DockPanel Margin="10">
+            <Label Width="80">Usuario</Label>
+            <TextBox Name="txtUsuario" Text="{Binding LoginID, UpdateSourceTrigger=PropertyChanged}" 
                VerticalContentAlignment="Center"></TextBox>
-    </DockPanel>
-    <DockPanel Margin="10, 0, 10, 10">
-      <Label Width="80">Password</Label>
-      <TextBox Name="txtPassword" VerticalContentAlignment="Center"
-               Text ="{Binding Password}" 
+        </DockPanel>
+        <DockPanel Margin="10, 0, 10, 10">
+            <Label Width="80">Password</Label>
+            <TextBox Name="txtPassword" VerticalContentAlignment="Center" 
+               Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"
                Foreground="{Binding ElementName=txtPassword, Path=Background}" ></TextBox>
-    </DockPanel>
-    <StackPanel FlowDirection="RightToLeft" Orientation="Horizontal" Margin="10">
-      <Button Padding="10" Style="{StaticResource BotonLogin}" Command="{Binding LoginCommand}" IsDefault="True"
-              >Login</Button>
+        </DockPanel>
+        <StackPanel FlowDirection="RightToLeft" Orientation="Horizontal" Margin="10">
+            <Button Padding="10" Style="{StaticResource BotonLogin}" 
+              Command="{Binding LoginCommand}" 
+              IsDefault="True" >Login</Button>
+        </StackPanel>
     </StackPanel>
-  </StackPanel>
 </UserControl>
